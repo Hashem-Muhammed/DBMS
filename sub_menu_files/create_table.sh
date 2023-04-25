@@ -90,8 +90,11 @@ function append
 			then 
 				str+=$ele
 				str+=":"
+				((i+=1))
+				continue;
 			fi
-		str+=$ele	
+		str+=$ele
+		echo $str	
 		((i+=1))
 		done	
 	echo $str  >> $table_name
