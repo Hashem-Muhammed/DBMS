@@ -76,28 +76,9 @@ while [ $i -lt $column_numbers ]
 			done
 		((i+=1))
 	done		
-append "${names[@]}"
-append "${types[@]}"		
+append $table_name ${names[@]}
+append $table_name ${types[@]}		
 
 }	
-function append
-{
-	str=""
-	i=1
-	for ele in $@
-		do
-		if ! [[ $i -eq $column_numbers ]]
-			then 
-				str+=$ele
-				str+=":"
-				((i+=1))
-				continue;
-			fi
-		str+=$ele
-		echo $str	
-		((i+=1))
-		done	
-	echo $str  >> $table_name
-		
-}
+
 create_table
