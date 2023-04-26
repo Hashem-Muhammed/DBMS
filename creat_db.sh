@@ -22,7 +22,8 @@ do
 	fi
 	
 	mkdir $DB_NAME	
-	echo $DB_NAME is created succfully 	
+	echo $DB_NAME is created succfully 
+	cd ../	
 	break
 done
 $SHELL

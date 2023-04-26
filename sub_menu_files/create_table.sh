@@ -75,9 +75,11 @@ while [ $i -lt $column_numbers ]
 			esac
 			done
 		((i+=1))
-	done		
+	done
+source ../../sub_menu_files/append.sh;			
 append $table_name ${names[@]}
-append $table_name ${types[@]}		
+append $table_name ${types[@]}	
+
 
 }	
 
