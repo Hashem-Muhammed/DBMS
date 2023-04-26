@@ -7,7 +7,7 @@ do
 			
 			;;
 		List_Tables)
-			source ../../sub_menu_files/list_tables.sh ;
+			ls -f
 			exit
 			;;
 		Insert_In_TO_Table)
