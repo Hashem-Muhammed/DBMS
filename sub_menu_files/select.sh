@@ -72,10 +72,57 @@ else
 					fi
 				done	
 		else 
-				echo ${names[*]}
-				echo "enter number of tables you want to select"
-				read NUM
 				
+				
+				echo ${names[*]}
+				echo "enter number of columns you want to select"
+				read NUM
+				for (( i=0; i<$NUM; i++))
+				do
+				echo ""
+				echo "enter the name of column number $i"
+				read x
+				echo ""
+				CO=( $(awk -v c=$x -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
+				DISPLAY[$i]=$CO
+				
+				done
+				
+				echo ${DISPLAY[@]}	
+				
+				while true
+				do
+					
+					echo ""
+					echo "choose column you want to equal the value to"
+					read col
+					
+					
+					i=0
+					for ele in ${names[@]}
+					do
+						if test $col == $ele
+						then
+							i=1
+						fi	
+					done
+					
+					
+					if test $i -gt 0
+					then	
+					echo ""
+					echo "enter value"
+					read VAL
+					z=1
+					COL=( $(awk -v c=$col -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
+					awk -v z=$z -v val=$VAL -v col=$COL -F: '{if($col == val){print $z;}}' ./$TABLE
+					break;
+					
+					
+					else
+					echo "this column does not exist"
+					fi
+				done	
 				
 							
 								
