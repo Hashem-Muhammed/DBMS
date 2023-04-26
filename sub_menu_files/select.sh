@@ -5,15 +5,15 @@ ls
 while true
 do
 
-echo "choose table you want to select from "
-read TABLE 
-if ! [[ -f $TABLE ]]
-	then
-		echo "this table does not exist"
-		continue;
-else
-		break;		
-fi
+	echo "choose table you want to select from "
+	read TABLE 
+	if ! [[ -f $TABLE ]]
+		then
+			echo "this table does not exist"
+			continue;
+	else
+			break;		
+	fi
 done
 
 
@@ -36,9 +36,10 @@ else
 		
 		if test $X = "y"
 			then
+				#if user want to select all records where certaine condition 
 				while true
 				do
-					
+					#check if column user enter is exist in the selected table
 					echo ""
 					echo ${names[*]}
 					echo ""
@@ -61,8 +62,9 @@ else
 					echo ""
 					echo "enter value"
 					read VAL
-					
+					#return feild number of the column name entered
 					COL=( $(awk -v c=$col -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
+					#print all records where the column entered = value entered
 					awk -v val=$VAL	-v col=$COL -F: '{if($col == val){print $0}}' ./$TABLE
 					break;
 					
@@ -73,22 +75,14 @@ else
 				done	
 		else 
 				
-				
+				#if user want to select certain column where certain condition
 				echo ${names[*]}
-				echo "enter number of columns you want to select"
-				read NUM
-				for (( i=0; i<$NUM; i++))
-				do
 				echo ""
-				echo "enter the name of column number $i"
+				echo "enter the name of column you want to select "
 				read x
 				echo ""
-				CO=( $(awk -v c=$x -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
-				DISPLAY[$i]=$CO
 				
-				done
-				
-				echo ${DISPLAY[@]}	
+					
 				
 				while true
 				do
@@ -113,9 +107,11 @@ else
 					echo ""
 					echo "enter value"
 					read VAL
-					z=1
+					
+					CO=( $(awk -v c=$x -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE)) 
 					COL=( $(awk -v c=$col -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
-					awk -v z=$z -v val=$VAL -v col=$COL -F: '{if($col == val){print $z;}}' ./$TABLE
+					awk -v co=$CO -v val=$VAL -v col=$COL -F: '{if($col == val){print $co}}' ./$TABLE
+		
 					break;
 					
 					
@@ -130,3 +126,4 @@ else
 		fi		
 
 fi
+$SHELL
