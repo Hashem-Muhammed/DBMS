@@ -76,7 +76,7 @@ fi
 ((i+=1))
 done
 
-	
-echo ${values[@]}	
+source ./append.sh
+append $table_name ${values[@]} 
 	
 	
