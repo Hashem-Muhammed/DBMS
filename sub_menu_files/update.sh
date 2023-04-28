@@ -147,7 +147,7 @@ fi
 					
 				
 #pass to the sed command the records that meet the where condtion then using sed to replace all values in VAL_F array with the value user entered
-				awk -v W_COL=$W_COL_N -v W_VAL=$W_VAL -v VAL=$VAL -v COL=$COL_N -F: 'BEGIN{OFS=":"} {if($W_COL == W_VAL){$COL=VAL}}' ./$TABL > temp && mv temp $TABL
+				awk -v W_COL=$W_COL_N -v W_VAL=$W_VAL -v VAL=$VAL -v COL=$COL_N -F: 'BEGIN{OFS=":"} {if($W_COL == W_VAL){$COL=VAL}}1' ./$TABL > temp && mv temp $TABL
 				
 				
 				
