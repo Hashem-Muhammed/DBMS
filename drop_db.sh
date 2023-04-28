@@ -1,4 +1,5 @@
 #!/usr/bin/bash 
+ls 
 echo "enter name of database you want to drop"
 read DROP
 cd ./databases
