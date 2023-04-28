@@ -4,7 +4,7 @@ do
 	case $choice in 
 		Create_Table)
 			source ../../sub_menu_files/create_table.sh ;
-			
+			exit
 			;;
 		List_Tables)
 			ls -f
