@@ -1,5 +1,8 @@
 #!/usr/bin/bash 
 function deleteFromTable {
+echo ""
+ls
+echo ""
 echo "Enter the table name:"
 read table_name
 while true
@@ -17,7 +20,11 @@ while true
 
 names=( $(awk -F: '{if(NR == 1){for (i=1; i<=NF; i++ ) print $i} }' $table_name) ) 
 lines_number=( $(cat $table_name | wc -l) )
-echo "What do you want to delete?"	
+echo ""
+awk -F: 'BEGIN{i=1;} {if(NR!=2&&NR!=1){print $0; i++;}}' ./$table_name
+echo ""
+echo "What do you want to delete?"
+echo ""	
 		select choice in delete_all delete_on_condition
 			do
 			case $choice in
@@ -36,7 +43,7 @@ function delete_eq {
 flag=0
 index=0
 i=0
-echo "Enter the column name"
+echo "Enter the column name of the where condition"
 read column_name			
 while true
 do
@@ -58,9 +65,14 @@ if [[ $flag -eq 0 ]]
 	fi
 	break;
 done
-echo "Enter the value"
+echo "Enter the value of the where condition"
 read value
 awk -F: -v val="$value" -v i="$index" ' NR<=2 || $i != val  ' $table_name > temp && mv temp $table_name
+echo ""
+echo "record deleted successfully"
+echo ""
+awk -F: 'BEGIN{i=1;} {if(NR!=2&&NR!=1){print $0; i++;}}' ./$table_name
+
 
 }
 

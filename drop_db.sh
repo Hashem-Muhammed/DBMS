@@ -1,8 +1,9 @@
 #!/usr/bin/bash 
-ls 
+cd ./databases
+ls
+echo ""
 echo "enter name of database you want to drop"
 read DROP
-cd ./databases
 while true
 do
 if [[ -d $DROP ]]
@@ -13,6 +14,7 @@ if [[ -d $DROP ]]
 			if test $ANSWER = "y"
 				then
 					rm -r $DROP
+					echo ""
 					echo "$DROP database deleted succfully"
 					break;
 			else 
@@ -26,4 +28,5 @@ else
 		continue;
 fi
 done
+cd ../
 $SHELL	

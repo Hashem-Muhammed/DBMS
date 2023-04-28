@@ -9,6 +9,7 @@ do
 		List_Databases)
 			cd ./databases/;
 			ls -d */ ;
+			cd ../
 			exit
 			;;
 		Connect_TO_Databases)

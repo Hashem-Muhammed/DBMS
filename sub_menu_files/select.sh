@@ -26,6 +26,7 @@ read X
 
 if test $X = "y"
 	then
+		echo ""
 		awk -F: 'BEGIN{i=1;} {if(NR!=2&&NR!=1){print i,$0; i++;}}' ./$TABLE
 		
 else
@@ -65,6 +66,7 @@ else
 					#return feild number of the column name entered
 					COL=( $(awk -v c=$col -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
 					#print all records where the column entered = value entered
+					echo ""
 					awk -v val=$VAL	-v col=$COL -F: '{if($col == val){print $0}}' ./$TABLE
 					break;
 					
@@ -110,6 +112,7 @@ else
 					
 					CO=( $(awk -v c=$x -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE)) 
 					COL=( $(awk -v c=$col -F: '{if(NR==1){for(i=1; i<=NF; i++){if(c == $i){print i;}}}}' ./$TABLE))
+					echo ""
 					awk -v co=$CO -v val=$VAL -v col=$COL -F: '{if($col == val){print $co}}' ./$TABLE
 		
 					break;

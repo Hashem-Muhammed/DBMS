@@ -8,26 +8,32 @@ do
 			;;
 		List_Tables)
 			ls -f
+			cd ../../
 			exit
 			;;
 		Insert_In_TO_Table)
 			source ../../sub_menu_files/insert.sh  ;
+			cd ../../
 			exit
 			;;
 		Drop_Table)
 			source ../../sub_menu_files/drop_table.sh  ;
+			cd ../../
 			exit	
 			;;	
 		Select_From_Table)
 			source ../../sub_menu_files/select.sh  ;
+			cd ../../
 			exit	
 			;;
 		Delete_From_Table)
 			source ../../sub_menu_files/delete.sh  ;
+			cd ../../
 			exit	
 			;;
 		Update_Table)
 			source ../../sub_menu_files/update.sh  ;
+			cd ../../
 			exit	
 			;;						
 		*)

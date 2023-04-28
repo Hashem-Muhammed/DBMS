@@ -1,6 +1,9 @@
 #!/usr/bin/bash
 values=()
 i=0
+echo ""
+ls
+echo ""
 echo "Enter the table name:"
 read table_name
 while true
@@ -59,7 +62,6 @@ if [ "${types[$i]}" = "int" ];
 				continue;
 			fi
 			if [[ $i -eq 0 ]]
-			echo "here"
 				then
 				exist=( $(sed '1,2 d' $table_name | awk -F: '{print $1}'| 								grep $value) )
 				if ! [[ -z "$exist" ]]
@@ -78,5 +80,10 @@ done
 
 source ../../sub_menu_files/append.sh;
 append $table_name ${values[@]} 
+echo ""
+echo "record inserted successfully"
+echo ""
+awk -F: 'BEGIN{i=1;} {if(NR!=2&&NR!=1){print $0; i++;}}' ./$table_name
+echo ""
 	
 	
