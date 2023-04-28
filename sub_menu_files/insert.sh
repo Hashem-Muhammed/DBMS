@@ -85,5 +85,6 @@ echo "record inserted successfully"
 echo ""
 awk -F: 'BEGIN{i=1;} {if(NR!=2&&NR!=1){print $0; i++;}}' ./$table_name
 echo ""
+cd ../../
 	
 	

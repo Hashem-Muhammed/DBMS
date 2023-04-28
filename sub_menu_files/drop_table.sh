@@ -10,11 +10,11 @@ if [[ -f $DROP ]]
 			echo "y / n
 			"
 			read ANSWER
-			if test $ANSWER = "y
-			"
+			if test $ANSWER = "y"
 				then
 					rm -r $DROP
 					echo "$DROP table deleted succfully"
+					cd ../../
 					break;
 			else 
 				break;
